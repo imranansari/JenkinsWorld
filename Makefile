@@ -1,4 +1,4 @@
-NAME = eiais/jenkinsworld
+NAME = eiaisjenkins/jenkinsworld
 VERSION = latest
 
 all: build

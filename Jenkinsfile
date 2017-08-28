@@ -9,6 +9,6 @@ node(label: 'demo') {
     sh('make')
   }
   stage('sign-img'){
-    sh('docker trust sign eiais/JenkinsWorld:latest') 
+    sh('docker trust sign eiaisjenkins/jenkinsworld:latest') 
   }
 }
