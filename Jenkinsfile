@@ -11,6 +11,7 @@ node(label: 'demo') {
   stage('sign-img'){
     withDockerRegistry([credentialsId: 'hub-creds']) {
       withCredentials([string(credentialsId: 'DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE', variable: 'DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE')]) {  
+        sh('docker trust revoke eiaisjenkins/jenkinsworld:latest')
         sh('docker trust sign eiaisjenkins/jenkinsworld:latest') 
       }
     }
