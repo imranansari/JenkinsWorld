@@ -9,6 +9,10 @@ node(label: 'demo') {
     sh('make')
   }
   stage('sign-img'){
-    sh('docker trust sign eiaisjenkins/jenkinsworld:latest') 
+    withDockerRegistry([credentialsId: 'hub-creds']) {
+      withCredentials([string(credentialsId: 'DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE', variable: 'DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE')]) {  
+        sh('docker trust sign eiaisjenkins/jenkinsworld:latest') 
+      }
+    }
   }
 }
